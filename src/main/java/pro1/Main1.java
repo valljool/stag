@@ -12,7 +12,7 @@ public class Main1 {
     {
         String json = Api.getActionsByDepartment(department,year);
         ActionsList actions= new Gson().fromJson(json, ActionsList.class);
-        System.out.println("aa");
-        return -1; // TODO 1.1: Vrať počet akcí, které mají 0 přihlášených studentů
+
+        return actions.items.stream().filter(f -> f.personsCount == 0).count(); // TODO 1.1: Vrať počet akcí, které mají 0 přihlášených studentů
     }
 }
